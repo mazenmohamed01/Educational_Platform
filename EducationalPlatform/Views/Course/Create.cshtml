@@ -1,0 +1,117 @@
+﻿@model Course
+@{
+    Layout = "_MyLayout";
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Create Course - SB Admin</title>
+        <link href="/css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body>   
+       
+                
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Course</h3></div>
+                                    <div class="card-body">
+                                    <form method="post" action="/AddCourse/" enctype="multipart/form-data">
+                                            <div class="form-floating mb-3">
+                                            <input class="form-control" name="CourseName" id="courseName" type="text" placeholder="Enter course name" />
+                                                <label for="courseName">Course Name</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+
+                                            <input type="file" asp-for="clientFile" class="form-control" onchange="loadfile(event)">
+                                            <label for="clientFile">Course Image</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                            <textarea class="form-control" name="Description" id="courseDescription" placeholder="Enter course description" style="height: 100px"></textarea>
+                                                <label for="courseDescription">Course Description</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                            <input class="form-control" name="Price" id="coursePrice" type="text" placeholder="Enter course price" />
+                                                <label for="coursePrice">Course Price</label>
+                                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="Hours" id="Hours" type="number" placeholder="Enter course Hours" />
+                                <label for="Hours">Course hours</label>
+                            </div>
+                                            <div class="form-floating mb-3">
+                                            <select class="form-control" id="courseLevel" name="Level">
+                                                    <option value="Beginner">Beginner</option>
+                                                    <option value="Intermediate">Intermediate</option>
+                                                    <option value="Advanced">Advanced</option>
+                                                </select>
+                                                <label for="courseLevel">Course Level</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                            <textarea class="form-control" name="Requirements" id="courseRequirements" placeholder="Enter course requirements" style="height: 100px"></textarea>
+                                                <label for="courseRequirements">Course Requirements</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                            <textarea class="form-control" name="Content" id="courseContent" placeholder="Enter course content" style="height: 100px"></textarea>
+                                                <label for="courseContent">Course Content</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                            <select id="CateId" name="CateId" class="form-control">
+
+                                                <option value=0>---- select Category ------</option>
+                                                @foreach (Category j in ViewBag.catagory)
+                                                {
+                                                    <option value="@j.Id">@j.CatName</option>
+                                                }
+                                                </select>
+                                                <label for="CateId">Category </label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+
+                                            <select id="InstructorId" name="InstructorId" class="form-control">
+
+                                                <option value=0>---- select Instructor ------</option>
+                                                @foreach (Instructor j in ViewBag.instr)
+                                                {
+                                                 <option value="@j.Id">@j.FullName</option>
+                                                }
+                                            </select>
+                                                <label for="InstructorId">Instructor </label>
+                                            
+                                            
+                                            </div>
+                                            <div class="mt-4 mb-0">
+                                                <input type="submit" value="Create Course" class="btn btn-success"/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+          
+    @* @section scrit {
+        <script>
+        var loadfile = function (event) {
+
+            var reader = new FileReader();
+            reader.onload = function () {
+                var myImge = document.getElementById("clientFile");
+                myImge.src = reader.result;
+            }
+        }
+        </script>
+    } *@
+    </body>
+</html>
+
+

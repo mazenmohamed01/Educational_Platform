@@ -1,0 +1,26 @@
+﻿@model Admin
+@{
+    Layout = "_MyLayout";
+    ViewData["Title"] = "Edit";
+}
+
+<form method="post" action="/admin/SaveEdit/">
+    <div>
+        <label>Name</label>
+        <input type="text" name="FullName" id="FullName" value="@Model.FullName" class="form form-control" />
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" name="Email" id="Email" value="@Model.Email" class="form form-control" />
+    </div>
+    <div>
+        <label>Phone</label>
+        <input type="text" name="Phone" id="Phone" value="@Model.Phone" class="form form-control" />
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="text" name="Password" id="Password" value="@Model.Password" class="form form-control" />
+
+    </div>
+    <input type="submit" value="Save" />
+</form>

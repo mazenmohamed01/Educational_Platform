@@ -1,0 +1,48 @@
+﻿@model Student
+
+<style>
+    td, th {
+        background: #eee;
+        padding: 14px;
+        margin: 9px;
+        border: solid;
+    }
+
+    table {
+        caption-side: bottom;
+        border-collapse: collapse;
+        width: 100%;
+    }
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Phone</th>
+            <th>Join date</th>
+            <th>Gender</th>
+            <th>Birth Day</th>
+
+        </tr>
+    </thead>
+    <tbody>
+       
+            @foreach (Student item in ViewBag.students)
+            {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+                <td>@item.Password</td>
+                <td>@item.Phone</td>
+                <td>@item.JoinDate</td>
+                <td>@item.Gender</td>
+                <td>@item.BirthDay</td>
+            </tr>
+            }
+        
+    </tbody>
+</table>

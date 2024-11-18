@@ -1,0 +1,53 @@
+﻿@model StudentProfileViewModel
+@{
+    Layout = "_StudentLayout";
+    ViewData["Title"] = "Profile";
+}
+
+<!-- Link to the CSS file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/profile.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/instructorprofile.css")" />
+</head>
+<body>
+    <div class="container">
+        <h2>@Model.FullName's Profile</h2>
+
+        <div class="profile-card">
+            <h3>Student Information</h3>
+            <p><strong>Name:</strong> @Model.FullName</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+            <p><strong>Gender:</strong> @Model.Gender</p>
+            <p><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
+
+            <button class="btn-edit" onclick="location.href='@Url.Action("Edit", "Student", new { id = Model.StudentId })'">Edit Profile</button>
+        </div>
+
+        <h3>Registered Courses</h3>
+        <div class="courses">
+            @if (Model.RegisteredCourses != null && Model.RegisteredCourses.Any())
+            {
+                @foreach (var course in Model.RegisteredCourses)
+                {
+                    <partial name="_CourseCard" model="course" />
+                }
+            }
+            else
+            {
+                <p>No courses registered.</p>
+            }
+        </div>
+    </div>
+
+</body>
+</html>
+
+@section Profile {
+    <li><a class="dropdown-item" href="/Student/Home/@Model.StudentId">Home</a></li>
+    <li><a class="dropdown-item" href="/Student/Profile/@Model.StudentId">Profile</a></li>
+}

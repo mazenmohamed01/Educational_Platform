@@ -1,0 +1,44 @@
+﻿@model Material
+
+
+@{
+    Layout = "_MyLayout";
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" action="/material/saveEdit/" enctype="multipart/form-data" style="margin:20px;">
+
+    <div class="form-floating mb-3">
+
+        <input type="file" asp-for="clientFile" class="form-control" >
+        <label for="clientFile">Course Image</label>
+    </div>
+    <div class="form-floating mb-3">
+
+        <td><a href="/material/@Model.FilePath">Display</a></td>
+    </div>
+    <input type="hidden" name="CoursId" value="@Model.CoursId" />
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="LecuerNumber" id="LecuerNumber" value="@Model.LecuerNumber" placeholder="LecuerNumber"></input>
+        <label for="LecuerNumber">LecuerNumber</label>
+    </div>
+    <div class="mt-4 mb-0">
+        <input type="submit" value="save" class="btn btn-success" />
+    </div>
+
+</form>
+@* @section scrit {
+    <script>
+        var loadfile = function (event) {
+
+            var reader = new FileReader();
+            reader.onload = function () {
+                var myImge = document.getElementById("clientFile");
+                myImge.src = reader.result;
+            }
+        }
+    </script>
+
+}  *@ 

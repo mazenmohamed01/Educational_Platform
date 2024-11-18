@@ -1,0 +1,12 @@
+﻿@model CourseViewModel
+<div class="course-card" style="margin: 10px;">
+    <a href="@Url.Action("coursDetails_", "Course", new { id = Model.courseId, student_id = Model.student_id })">
+        <img src="@Url.Content("~/Images/" + Model.Image)" alt="@Model.CourseName Image" class="course-image" />
+    </a>
+    <div class="course-info">
+        <h2 class="course-name">@Model.CourseName</h2>
+        <p class="course-price">$@Model.Price</p>
+        <p class="course-level">Level: @Model.Level</p>
+        <p class="course-instructor">Instructor: @Model.InstructorName</p>
+    </div>
+</div>

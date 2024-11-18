@@ -1,0 +1,123 @@
+﻿@model Course
+@{
+    Layout = "_InstructorLayout";
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Create Course - SB Admin</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Edit Course</h3></div>
+                    <div class="card-body">
+                        <form method="post" action="/Course/saveEdit/" enctype="multipart/form-data">
+                            <input type="hidden" name="instid" value="@ViewBag.id"></input>
+                            <input type="hidden" name="Id" value="@Model.Id"></input>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="CourseName" value="@Model.CourseName" id="courseName" type="text" placeholder="Enter course name" />
+                                <label for="courseName">Course Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+
+                                <input type="file" asp-for="clientFile" class="form-control" onchange="loadfile(event)">
+                                <label for="clientFile">Course Image</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" value="@Model.Description" class="form-control" name="Description" id="courseDescription" placeholder="Enter course description" style="height: 100px"></input>
+                                <label for="courseDescription">Course Description</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="Price" id="coursePrice" type="text" value="@Model.Price" placeholder="Enter course price" />
+                                <label for="coursePrice">Course Price</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" value="@Model.Hours" name="Hours" id="Hours" type="number" placeholder="Enter course Hours" />
+                                <label for="Hours">Course hours</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-control" id="courseLevel" name="Level">
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                                <label for="courseLevel">Course Level</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" value="@Model.Requirements" class="form-control" name="Requirements" id="courseRequirements" placeholder="Enter course requirements" style="height: 100px"></input>
+                                <label for="courseRequirements">Course Requirements</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" value="@Model.Content" class="form-control" name="Content" id="courseContent" placeholder="Enter course content" style="height: 100px"></input>
+                                <label for="courseContent">Course Content</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select id="CateId" name="CateId" class="form-control">
+
+                                    <option value=0>---- select Category ------</option>
+                                    @foreach (Category j in ViewBag.catagory)
+                                    {
+                                        <option value="@j.Id">@j.CatName</option>
+                                    }
+                                </select>
+                                <label for="CateId">Category </label>
+                            </div>
+                            <div class="form-floating mb-3">
+
+                                <select id="InstructorId" name="InstructorId" class="form-control">
+
+                                    <option value=0>---- select Instructor ------</option>
+                                    @foreach (Instructor j in ViewBag.instr)
+                                    {
+                                        <option value="@j.Id">@j.FullName</option>
+                                    }
+                                </select>
+                                <label for="InstructorId">Instructor </label>
+
+
+                            </div>
+                            <div class="mt-4 mb-0">
+                                <input type="submit" value="Edit Course" class="btn btn-success" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*  @section scrit {
+    <script>
+    var loadfile = function (event) {
+
+    var reader = new FileReader();
+    reader.onload = function () {
+    var myImge = document.getElementById("clientFile");
+    myImge.src = reader.result;
+    }
+    }
+    </script>
+    } *@
+</body>
+</html>
+@section Profile {
+    @* <li><a class="dropdown-item" href="/Instructor/Home/@ViewBag.id">Home</a></li> *@
+    <li><a class="dropdown-item" href="/Instructor/MyProfile/@ViewBag.id">Profile</a></li>
+}
+
+

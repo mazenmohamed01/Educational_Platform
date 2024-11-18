@@ -1,0 +1,40 @@
+﻿@model Student
+@{
+    Layout = "_StudentLayout";
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+@* <p>wlecom @ViewBag.name</p> *@
+<form method="post" action="/Student/SaveEdit/@Model.Id ">
+    <div>
+        <label>Name</label>
+        <input type="text" name="FullName" id="FullName" value="@Model.FullName" class="form form-control" />
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" name="Email" id="Email" value="@Model.Email" class="form form-control" />
+    </div>
+    <div>
+        <label>Phone</label>
+        <input type="text" name="Phone" id="Phone" value="@Model.Phone" class="form form-control" />
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="text" name="Password" id="Password" value="@Model.Password" class="form form-control" />
+    </div>
+    <div>
+        <label>Gender</label>
+        <input type="text" name="Gender" id="Gender" value="@Model.Gender" class="form form-control" />
+    </div>
+    <div>
+        <label>BirthDay</label>
+        <input type="datetime" name="BirthDay" id="BirthDay" value="@Model.BirthDay" class="form form-control" />
+    </div>
+    <input type="submit" value="Save" />
+</form>
+@section Profile {
+    <li><a class="dropdown-item" href="/Student/Home/@Model.Id">Home</a></li>
+    <li><a class="dropdown-item" href="/Student/Profile/@Model.Id">Profile</a></li>
+}
+

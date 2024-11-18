@@ -1,0 +1,53 @@
+﻿@model InstructorProfileViewModel
+@{
+    Layout = "_StudentLayout";
+
+    ViewData["Title"] = "Profile";
+}
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="/css/instructorprofile.css" />
+
+<div class="profile-container">
+    <div class="profile-header">
+        <h2>@Model.FullName's Profile</h2>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
+    </div>
+
+    <div class="courses-section">
+        <h3>Courses Taught</h3>
+        @if (Model.Courses != null)
+        {
+
+            <div class="courses-grid">
+                @foreach (var course in Model.Courses)
+                {
+                    <div class="course-card">
+                        <div class="course-card-content">
+                            <a href="/Course/coursDetails?id=@course.Id&student_id=@ViewBag.stud_id">
+                            <img src="/Images/@course.Image" alt="@course.CourseName" />
+                            </a>
+                            <div class="course-details">
+                                <h4>@course.CourseName</h4>
+                                <p>@course.Description</p>
+                                @if (course.Price.HasValue)
+                                {
+                                    <p class="course-price">Price: $@course.Price</p>
+                                }
+                                <p class="course-level">Level: @course.Level</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="no-courses">No courses found for this instructor.</p>
+        }
+    </div>
+</div>
+@section Profile {
+    <li><a class="dropdown-item" href="/Student/Home/@ViewBag.stud_id">Home</a></li>
+    <li><a class="dropdown-item" href="/Student/Profile/@ViewBag.stud_id">Profile</a></li>
+}

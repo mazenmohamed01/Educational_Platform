@@ -1,0 +1,46 @@
+﻿@model Instructor
+@{
+    Layout = "_MyLayout";
+}
+<div class="container profile-container mt-5">
+    <div class="text-center">
+        <img src="/css/profile.gif" class="img-fluid" alt="Instructor profile image" style="width: 150px; height: 150px; object-fit: cover;">
+    </div>
+    <h1 class="text-center my-4">Add Instructor</h1>
+
+    <form id="profile-form" action="/AddInstructor/" method="post" enctype="multipart/form-data">
+        <div class="form-group mb-3">
+            <label for="FullName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="FullName" name="FullName" value="@Model.FullName" placeholder="Enter instructor's full name">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="clientFile" class="form-label">Image</label>
+            <input type="file" class="form-control" id="clientFile" name="clientFile">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="@Model.Email" placeholder="Enter instructor's email">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Gender" class="form-label">Gender</label>
+            <select class="form-select" id="Gender" name="Gender">
+                <option value="">----- Select Gender -----</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" value="@Model.Password" placeholder="Enter instructor's password">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+

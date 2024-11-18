@@ -1,0 +1,56 @@
+﻿
+@model List<Material>
+@{
+    Layout = "_MyLayout";
+}
+
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Material</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            files
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+
+                        <th>Name</th>
+                        <th>link</th>
+                        <th>LecuerNumber</th>
+                        @* <th>Edit</th>
+                        <th>Delete</th> *@
+
+
+                    </tr>
+                </thead>
+                <tfoot>
+
+                <th>Name</th>
+                <th>link</th>
+                <th>LecuerNumber</th>
+                @* <th>Edit</th>
+                <th>Delete</th> *@
+
+                </tfoot>
+                <tbody>
+                    @foreach (Material item in Model)
+                    {
+                        <tr>
+                            <td>@item.FilePath</td>
+                            <td><a href="/material/@item.FilePath">Display</a></td>
+                            <td>@item.LecuerNumber</td>
+                            @* <td><a href="/material/Edit/@item.Id">Edit</a></td>
+                            <td><a href="/Material/Delete/@item.Id">Delete</a> </td> *@
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+﻿@using EducationalPlatform.ViewModel;
+@model CategoryCoursesViewModel
+@{
+    if (ViewBag.name == "admin")
+        Layout = "_MyLayout";
+    else
+        Layout = "_HomeLayout";
+    ViewData["Title"] = "CoursesByCategory";
+}
+
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="~/css/CategoryCourses.css" />
+
+<div class="category-courses-container">
+    <h2>Courses in @Model.CategoryName</h2>
+    <div class="courses-grid">
+        @foreach (var course in Model.Courses)
+        {
+            <div class="course-card">
+                <div class="course-card-content">
+                    <a href="/course/gitbyId?id=@course.Id&name=@ViewBag.name">
+                    <img src="/Images/@course.Image" />
+                    </a>
+                    <div class="course-details">
+                        <h3>@course.CourseName</h3>
+                        <p>@course.Description</p>
+                        @if (course.Price.HasValue)
+                        {
+                            <p class="course-price">Price: $@course.Price</p>
+                        }
+                        <p class="course-level">Level: @course.Level</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,57 @@
+﻿@model InstructorProfileViewModel
+@{
+    Layout = "_InstructorLayout";
+
+    ViewData["Title"] = "Profile";
+}
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="/css/instructorprofile.css" />
+
+<div class="profile-container">
+    <div class="profile-header">
+        <a href="/Images/@Model.Image"><img src="/Images/@Model.Image"></img> </a>
+        <h2>@Model.FullName's Profile</h2>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
+        <a href="/Instructor/EditView?id=@Model.InstructorId&name=instructor">Edit</a>
+        <a href="/Course/CreateForInstructor/@ViewBag.id">Add Cours</a>
+    </div>
+
+    <div class="courses-section">
+        <h3>Courses Taught</h3>
+        @if (Model.Courses != null)
+        {
+
+            <div class="courses-grid">
+                @foreach (var course in Model.Courses)
+                {
+                    <div class="course-card">
+                        <div class="course-card-content">
+                            <a href="/Course/EditViewForInstructor?id=@course.Id&inst_id=@ViewBag.id">
+                                <img src="/Images/@course.Image" alt="@course.CourseName" />
+                            </a>
+                            <div class="course-details">
+                                <h4>@course.CourseName</h4>
+                                <p>@course.Description</p>
+                                @if (course.Price.HasValue)
+                                {
+                                    <p class="course-price">Price: $@course.Price</p>
+                                }
+                                <p class="course-level">Level: @course.Level</p>
+                                <p><a href="/Course/Delete?id=@course.Id&instid=@ViewBag.id">Delete</a></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="no-courses">No courses found for this instructor.</p>
+        }
+    </div>
+</div>
+@section Profile {
+  
+    <li><a class="dropdown-item" href="/Instructor/MyProfile/@ViewBag.id">Profile</a></li>
+}

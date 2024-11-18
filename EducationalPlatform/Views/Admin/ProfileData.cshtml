@@ -1,0 +1,62 @@
+﻿@model Admin
+@{
+    Layout = "_MyLayout";
+
+    ViewData["Title"] = "ProfileData";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/css/test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        #btnn {
+            background-color: #3795e1;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            border: none;
+            border-radius: 17px;
+        }
+    </style>
+    <div class="profile-container">
+        <img src="/css/profile.gif" alt="Description of the GIF">
+
+        <form id="profile-form" action="/SaveEdit/" method="post">
+            <div class="form-group">
+                <label for="FullName">Name</label>
+                <input type="text" id="FullName" name="FullName" value="@Model.FullName">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="@Model.Email">
+            </div>
+
+            <div class="form-group" >
+                <label for="Password">Password</label>
+                <input type="text" id="Password" name="Password" value="@Model.Password">
+            </div>
+
+            <div class="form-group" >
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" value="@Model.Phone">
+            </div>
+
+          
+            
+             <button type="submit" class="save-button">Edit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
