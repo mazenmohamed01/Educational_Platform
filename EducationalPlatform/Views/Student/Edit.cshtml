@@ -4,35 +4,60 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-@* <p>wlecom @ViewBag.name</p> *@
-<form method="post" action="/Student/SaveEdit/@Model.Id ">
-    <div>
-        <label>Name</label>
-        <input type="text" name="FullName" id="FullName" value="@Model.FullName" class="form form-control" />
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-body p-5">
+                    <h2 class="mb-4 fw-bold text-center text-primary">Edit Profile</h2>
+
+                    <form method="post" action="/Student/SaveEdit/@Model.Id">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="FullName" class="form-label">Full Name</label>
+                                <input type="text" name="FullName" id="FullName" value="@Model.FullName" class="form-control" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="email" name="Email" id="Email" value="@Model.Email" class="form-control" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="Phone" class="form-label">Phone</label>
+                                <input type="text" name="Phone" id="Phone" value="@Model.Phone" class="form-control" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="Password" class="form-label">Password</label>
+                                <input type="password" name="Password" id="Password" value="@Model.Password" class="form-control" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="Gender" class="form-label">Gender</label>
+                                <select name="Gender" id="Gender" class="form-select">
+                                    <option value="Male" selected="@(Model.Gender == "Male")">Male</option>
+                                    <option value="Female" selected="@(Model.Gender == "Female")">Female</option>
+                                    <option value="Other" selected="@(Model.Gender == "Other")">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="BirthDay" class="form-label">Birthday</label>
+                                <input type="date" name="BirthDay" id="BirthDay" value="@Model.BirthDay?.ToString("yyyy-MM-dd")" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary px-5 rounded-pill shadow">Save Changes</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Email</label>
-        <input type="text" name="Email" id="Email" value="@Model.Email" class="form form-control" />
-    </div>
-    <div>
-        <label>Phone</label>
-        <input type="text" name="Phone" id="Phone" value="@Model.Phone" class="form form-control" />
-    </div>
-    <div>
-        <label>Password</label>
-        <input type="text" name="Password" id="Password" value="@Model.Password" class="form form-control" />
-    </div>
-    <div>
-        <label>Gender</label>
-        <input type="text" name="Gender" id="Gender" value="@Model.Gender" class="form form-control" />
-    </div>
-    <div>
-        <label>BirthDay</label>
-        <input type="datetime" name="BirthDay" id="BirthDay" value="@Model.BirthDay" class="form form-control" />
-    </div>
-    <input type="submit" value="Save" />
-</form>
+</div>
 @section Profile {
     <li><a class="dropdown-item" href="/Student/Home/@Model.Id">Home</a></li>
     <li><a class="dropdown-item" href="/Student/Profile/@Model.Id">Profile</a></li>

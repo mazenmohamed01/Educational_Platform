@@ -9,30 +9,56 @@
 }
 
 <!-- Link to the CSS file -->
-<link rel="stylesheet" href="~/css/CategoryCourses.css" />
+<!-- Categories Start -->
+<!-- Header Start -->
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Courses in @Model.CategoryName</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Categories Start -->
+<div class="container-xxl py-5 category">
+    <div class="container">
 
-<div class="category-courses-container">
-    <h2>Courses in @Model.CategoryName</h2>
-    <div class="courses-grid">
-        @foreach (var course in Model.Courses)
+        <!-- Check if there are courses -->
+        @if (!Model.Courses.Any())
         {
-            <div class="course-card">
-                <div class="course-card-content">
-                    <a href="/course/gitbyId?id=@course.Id&name=@ViewBag.name">
-                    <img src="/Images/@course.Image" />
-                    </a>
-                    <div class="course-details">
-                        <h3>@course.CourseName</h3>
-                        <p>@course.Description</p>
-                        @if (course.Price.HasValue)
-                        {
-                            <p class="course-price">Price: $@course.Price</p>
-                        }
-                        <p class="course-level">Level: @course.Level</p>
+            <div class="alert alert-warning text-center">No courses added yet for this category.</div>
+        }
+        else
+        {
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Available Courses</h6>
+                <h1 class="mb-5">Courses in @Model.CategoryName</h1>
+            </div>
+
+            <div class="row">
+                @foreach (var course in Model.Courses)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4 wow zoomIn" data-wow-delay="0.3s">
+                        <div class="card h-100 border-0 shadow">
+                            <a href="/course/gitbyId/@course.Id">
+                                <img class="card-img-top" src="/Images/@course.Image" alt="@course.CourseName" style="height: 200px; object-fit: cover;">
+                            </a>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@course.CourseName</h5>
+                                <p class="card-text">@course.Description</p>
+                                @if (course.Price.HasValue)
+                                {
+                                    <p class="course-price text-success">Price: $@course.Price</p>
+                                }
+                                <p class="course-level">Level: @course.Level</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         }
     </div>
 </div>
-
+<!-- Categories End -->

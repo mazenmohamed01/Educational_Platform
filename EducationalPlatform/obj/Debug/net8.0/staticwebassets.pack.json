@@ -9,12 +9,40 @@
       "PackagePath": "staticwebassets\\Images\\Computer Programmin.jpeg"
     },
     {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Cyber Security.jpg",
+      "PackagePath": "staticwebassets\\Images\\Cyber Security.jpg"
+    },
+    {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\DataScience.jpeg",
       "PackagePath": "staticwebassets\\Images\\DataScience.jpeg"
     },
     {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Digital Marketing.jpg",
+      "PackagePath": "staticwebassets\\Images\\Digital Marketing.jpg"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Gorgeous_UPd.jpg",
+      "PackagePath": "staticwebassets\\Images\\Gorgeous_UPd.jpg"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Health Needs.jpg",
+      "PackagePath": "staticwebassets\\Images\\Health Needs.jpg"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\HowC.jpg",
+      "PackagePath": "staticwebassets\\Images\\HowC.jpg"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Internet of things.jpg",
+      "PackagePath": "staticwebassets\\Images\\Internet of things.jpg"
+    },
+    {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Java.jpeg",
       "PackagePath": "staticwebassets\\Images\\Java.jpeg"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Python .jpg",
+      "PackagePath": "staticwebassets\\Images\\Python .jpg"
     },
     {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Python 3_10_ What To Expect.jpeg",
@@ -45,6 +73,10 @@
       "PackagePath": "staticwebassets\\Images\\Web Development.jpeg"
     },
     {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\Web Development.jpg",
+      "PackagePath": "staticwebassets\\Images\\Web Development.jpg"
+    },
+    {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\about.jpg",
       "PackagePath": "staticwebassets\\Images\\about.jpg"
     },
@@ -63,6 +95,10 @@
     {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\cat-4.jpg",
       "PackagePath": "staticwebassets\\Images\\cat-4.jpg"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\download.jpg",
+      "PackagePath": "staticwebassets\\Images\\download.jpg"
     },
     {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\Images\\onlin markting.jpeg",
@@ -555,6 +591,22 @@
     {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\material\\EntityFrameworkCore.pdf",
       "PackagePath": "staticwebassets\\material\\EntityFrameworkCore.pdf"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\material\\Introduction to JOINs.pdf",
+      "PackagePath": "staticwebassets\\material\\Introduction to JOINs.pdf"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\material\\Linux Commands.pdf",
+      "PackagePath": "staticwebassets\\material\\Linux Commands.pdf"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\material\\NLP Revision_Marker.pdf",
+      "PackagePath": "staticwebassets\\material\\NLP Revision_Marker.pdf"
+    },
+    {
+      "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\material\\SOM.pdf",
+      "PackagePath": "staticwebassets\\material\\SOM.pdf"
     },
     {
       "Id": "D:\\EducationalPlatform\\EducationalPlatform\\wwwroot\\material\\StudentPublish.pdf",

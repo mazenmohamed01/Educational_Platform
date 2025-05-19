@@ -86,7 +86,7 @@ namespace EducationalPlatform.Controllers
             var f = db.Courses.Include(i => i.Instructor).Include(i => i.Cate).Where(x => x.IsDelete == "false")
                 .Select(i => new coursesModel
                 {
-                
+                    Id=i.Id,
                     CourseName = i.CourseName,
                     Price = i.Price,
                     Level = i.Level,    

@@ -24,6 +24,33 @@ namespace EducationalPlatform.Controllers
             return View();
         }
 
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            //List<Instructor> AllInstructors = db.Instructors.ToList();
+            List<Instructor> topInstructors = db.Instructors.OrderBy(i => Guid.NewGuid()).Take(4).ToList();
+
+            return View(topInstructors);
+        }
+
+        public IActionResult Categories()
+        {
+            List<Category> AllCategories = db.Categories.ToList();
+            return View(AllCategories);
+        }
+
+
+        public IActionResult OurTeam()
+        {
+            List<Instructor> AllInstructors = db.Instructors.ToList();
+            return View(AllInstructors);
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

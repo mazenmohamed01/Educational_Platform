@@ -531,3 +531,4 @@ D:\EducationalPlatform\EducationalPlatform\obj\Debug\net8.0\EducationalPlatform.
 D:\EducationalPlatform\EducationalPlatform\obj\Debug\net8.0\ref\EducationalPlatform.dll
 D:\EducationalPlatform\EducationalPlatform\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\EducationalPlatform\EducationalPlatform\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\EducationalPlatform\EducationalPlatform\obj\Debug\net8.0\EducationalPlatform.sourcelink.json

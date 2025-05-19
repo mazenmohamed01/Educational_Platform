@@ -8,34 +8,53 @@
     ViewData["Title"] = "Profile";
 }
 <!-- Link to the CSS file -->
-<link rel="stylesheet" href="/css/instructorprofile.css" />
-
-<div class="profile-container">
-    <div class="profile-header">
-        <h2>@Model.FullName's Profile</h2>
-        <p><strong>Email:</strong> @Model.Email</p>
-        <p><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
+<!-- <link rel="stylesheet" href="/css/instructorprofile.css" /> -->
+<!-- Header Start -->
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">@Model.FullName's Profile</h1>
+            </div>
+        </div>
     </div>
+</div>
+<!-- Header End -->
+<!-- Profile Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <!-- Instructor Information Section -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Instructor Information</h6>
+                <p><strong>Email:</strong> @Model.Email</p>
+                <p><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
+            </div>
+        </div>
 
-    <div class="courses-section">
-        <h3>Courses Taught</h3>
-        @if (Model.Courses != null )
+        <!-- Courses Section -->
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
+            <h1 class="mb-5">Courses Taught</h1>
+        </div>
+
+        <!-- Check if there are courses -->
+        @if (Model.Courses.Any())
         {
-            
-            <div class="courses-grid">
+            <div class="row">
                 @foreach (var course in Model.Courses)
                 {
-                    <div class="course-card">
-                        <div class="course-card-content">
-                            <a href="/course/gitbyId?id=@course.Id&name=@ViewBag.view">
-                            <img src="/Images/@course.Image" alt="@course.CourseName" />
+                    <div class="col-lg-4 col-md-6 mb-4 wow zoomIn" data-wow-delay="0.3s">
+                        <div class="card h-100 border-0 shadow">
+                            <a href="/course/gitbyId/@course.Id">
+                                <img class="card-img-top" src="/Images/@course.Image" alt="@course.CourseName" style="height: 200px; object-fit: cover;">
                             </a>
-                            <div class="course-details">
-                                <h4>@course.CourseName</h4>
-                                <p>@course.Description</p>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@course.CourseName</h5>
+                                <p class="card-text">@course.Description</p>
                                 @if (course.Price.HasValue)
                                 {
-                                    <p class="course-price">Price: $@course.Price</p>
+                                    <p class="course-price text-success">Price: $@course.Price</p>
                                 }
                                 <p class="course-level">Level: @course.Level</p>
                             </div>
@@ -46,8 +65,8 @@
         }
         else
         {
-            <p class="no-courses">No courses found for this instructor.</p>
+            <div class="alert alert-warning text-center">No courses found for this instructor.</div>
         }
     </div>
 </div>
-
+<!-- Profile End -->

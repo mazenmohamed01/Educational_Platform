@@ -1,45 +1,50 @@
 ﻿@model InstructorProfileViewModel
 @{
     Layout = "_InstructorLayout";
-
     ViewData["Title"] = "Profile";
 }
-<!-- Link to the CSS file -->
+
+<!-- Link to the updated CSS file -->
 <link rel="stylesheet" href="/css/instructorprofile.css" />
 
 <div class="profile-container">
     <div class="profile-header">
-        <a href="/Images/@Model.Image"><img src="/Images/@Model.Image"></img> </a>
-        <h2>@Model.FullName's Profile</h2>
-        <p><strong>Email:</strong> @Model.Email</p>
-        <p><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
-        <a href="/Instructor/EditView?id=@Model.InstructorId&name=instructor">Edit</a>
-        <a href="/Course/CreateForInstructor/@ViewBag.id">Add Cours</a>
+        <div class="profile-image">
+            <a href="/Images/@Model.Image">
+                <img src="/Images/@Model.Image" alt="@Model.FullName's Profile Picture" />
+            </a>
+        </div>
+        <div class="profile-info">
+            <h2>@Model.FullName</h2>
+            <p class="email"><strong>Email:</strong> @Model.Email</p>
+            <p class="join-date"><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
+            <div class="profile-actions">
+                <a href="/Instructor/EditView?id=@Model.InstructorId&name=instructor" class="btn btn-primary">Edit Profile</a>
+                <a href="/Course/CreateForInstructor/@ViewBag.id" class="btn btn-secondary">Add Course</a>
+            </div>
+        </div>
     </div>
 
     <div class="courses-section">
         <h3>Courses Taught</h3>
-        @if (Model.Courses != null)
+        @if (Model.Courses != null && Model.Courses.Any())
         {
-
             <div class="courses-grid">
                 @foreach (var course in Model.Courses)
                 {
                     <div class="course-card">
-                        <div class="course-card-content">
-                            <a href="/Course/EditViewForInstructor?id=@course.Id&inst_id=@ViewBag.id">
-                                <img src="/Images/@course.Image" alt="@course.CourseName" />
-                            </a>
-                            <div class="course-details">
-                                <h4>@course.CourseName</h4>
-                                <p>@course.Description</p>
-                                @if (course.Price.HasValue)
-                                {
-                                    <p class="course-price">Price: $@course.Price</p>
-                                }
-                                <p class="course-level">Level: @course.Level</p>
-                                <p><a href="/Course/Delete?id=@course.Id&instid=@ViewBag.id">Delete</a></p>
-                            </div>
+                        <a href="/Course/EditViewForInstructor?id=@course.Id&inst_id=@ViewBag.id">
+                            <img src="/Images/@course.Image" alt="@course.CourseName" class="course-image" />
+                        </a>
+                        <div class="course-details">
+                            <h4>@course.CourseName</h4>
+                            <p class="course-description">@course.Description</p>
+                            @if (course.Price.HasValue)
+                            {
+                                <p class="course-price">Price: $@course.Price</p>
+                            }
+                            <p class="course-level">Level: @course.Level</p>
+                            <a href="/Course/Delete?id=@course.Id&instid=@ViewBag.id" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 }
@@ -51,7 +56,7 @@
         }
     </div>
 </div>
+
 @section Profile {
-  
-    <li><a class="dropdown-item" href="/Instructor/MyProfile/@ViewBag.id">Profile</a></li>
+    <li><a class="dropdown-item active" href="/Instructor/MyProfile/@ViewBag.id">Profile</a></li>
 }

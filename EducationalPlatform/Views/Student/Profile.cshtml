@@ -4,48 +4,87 @@
     ViewData["Title"] = "Profile";
 }
 
-<!-- Link to the CSS file -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="@Url.Content("~/css/profile.css")" />
-    <link rel="stylesheet" href="@Url.Content("~/css/instructorprofile.css")" />
-</head>
-<body>
+
     <div class="container">
-        <h2>@Model.FullName's Profile</h2>
-
-        <div class="profile-card">
-            <h3>Student Information</h3>
-            <p><strong>Name:</strong> @Model.FullName</p>
-            <p><strong>Email:</strong> @Model.Email</p>
-            <p><strong>Gender:</strong> @Model.Gender</p>
-            <p><strong>Join Date:</strong> @(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</p>
-
-            <button class="btn-edit" onclick="location.href='@Url.Action("Edit", "Student", new { id = Model.StudentId })'">Edit Profile</button>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-sm mb-5">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">@Model.FullName's Profile</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Student Information</h4>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Name</dt>
+                            <dd class="col-sm-8">@Model.FullName</dd>
+                            <dt class="col-sm-4">Email</dt>
+                            <dd class="col-sm-8">@Model.Email</dd>
+                            <dt class="col-sm-4">Gender</dt>
+                            <dd class="col-sm-8">@Model.Gender</dd>
+                            <dt class="col-sm-4">Join Date</dt>
+                            <dd class="col-sm-8">@(Model.JoinDate.HasValue ? Model.JoinDate.Value.ToString("MMMM dd, yyyy") : "N/A")</dd>
+                        </dl>
+                        <div class="text-end mt-4">
+                            <a href="@Url.Action("Edit", "Student", new { id = Model.StudentId })" class="btn btn-outline-primary">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <h3>Registered Courses</h3>
-        <div class="courses">
-            @if (Model.RegisteredCourses != null && Model.RegisteredCourses.Any())
-            {
-                @foreach (var course in Model.RegisteredCourses)
-                {
-                    <partial name="_CourseCard" model="course" />
-                }
-            }
-            else
-            {
-                <p>No courses registered.</p>
-            }
+    <div class="row mt-5">
+        <div class="col-12 mb-4 d-flex justify-content-between align-items-center">
+            <h3 class="fw-bold text-dark">Enrolled Courses (@(Model.RegisteredCourses?.Count() ?? 0))</h3>
+            <a href="/Course/Browse" class="btn btn-outline-primary rounded-pill">Browse More</a>
         </div>
+
+        @if (Model.RegisteredCourses != null && Model.RegisteredCourses.Any())
+        {
+            @foreach (var course in Model.RegisteredCourses)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow">
+                        <a href="@Url.Action("coursDetails_", "Course", new { id = course.courseId, student_id = Model.StudentId })">
+                            <img class="card-img-top"
+                                 src="@(string.IsNullOrEmpty(course.Image) ? "/Images/default-course.png" : $"/Images/{course.Image}")"
+                                 alt="@course.CourseName"
+                                 style="height: 200px; object-fit: cover;">
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@course.CourseName</h5>
+                            <p class="card-text">@course.Description</p>
+
+                            @if (course.Price.HasValue)
+                            {
+                                <p class="text-success mb-1">Price: $@course.Price</p>
+                            }
+                            else
+                            {
+                                <p class="text-success mb-1">Free</p>
+                            }
+
+                            <p class="text-muted mb-0">Level: @course.Level</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center p-5 rounded-4 shadow-sm" role="alert">
+                    <h4 class="alert-heading fw-semibold mb-3">No Courses Enrolled</h4>
+                    <p class="mb-3">Start your journey by exploring available courses.</p>
+                    <a href="/Course/Browse" class="btn btn-primary rounded-pill">Explore Courses</a>
+                </div>
+            </div>
+        }
     </div>
 
-</body>
-</html>
+    </div>
+
+
 
 @section Profile {
     <li><a class="dropdown-item" href="/Student/Home/@Model.StudentId">Home</a></li>
